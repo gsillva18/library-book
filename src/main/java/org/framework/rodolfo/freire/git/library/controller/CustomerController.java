@@ -1,5 +1,6 @@
 package org.framework.rodolfo.freire.git.library.controller;
 
+import org.framework.rodolfo.freire.git.library.component.RegistryCustomer;
 import org.framework.rodolfo.freire.git.library.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/customer")
 public class CustomerController {
 
-    @Autowired
-    CustomerService service;
+    final
+    RegistryCustomer registryCustomer;
 
-    @GetMapping("/address")
-    public String address () {
-        return service.findAddress();
+    public CustomerController(RegistryCustomer registryCustomer) {
+        this.registryCustomer = registryCustomer;
     }
-
-
 }

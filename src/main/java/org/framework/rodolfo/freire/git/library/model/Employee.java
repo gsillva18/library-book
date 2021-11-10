@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -14,25 +15,25 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Employee {
+@Entity
+@PrimaryKeyJoinColumn(name = "peopleId")
+public class Employee extends People{
 
-    private long employeeId;
-    private long employeeCode;
-    private String employeeType;
-    private String employeeIdNational;
-    private String employeeName;
-    private String employeeGender;
-    private Date employeeBirthday;
-    private Date employeeRelationshipDate;
+    @Column(name = "EMPLOYEE_DEPARTAMENT")
+    @Enumerated(EnumType.STRING)
     private Department employeeDepartment;
+
+    @Column(name = "EMPLOYEE_OCCUPATION")
     private String employeeOccupation;
+
+    @Column(name = "EMPLOYEE_INCOME")
     private BigDecimal employeeIncome;
-    private Address employeeAddress;
-    private Phone employeePhone;
-    private String employeeEmail;
+
+    @Column(name = "EMPLOYEE_PASSWORD")
     private String employeePassword;
+
+    @Column(name = "EMPLOYEE_ACCESS_LEVELS")
     private String employeeAccessLevels;
-    private boolean employeeStatus;
 
 
 }

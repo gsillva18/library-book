@@ -1,5 +1,6 @@
 package org.framework.rodolfo.freire.git.library.controller;
 
+import org.framework.rodolfo.freire.git.library.component.RegistryEmployee;
 import org.framework.rodolfo.freire.git.library.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    @Autowired
-    EmployeeService service;
+    final
+    RegistryEmployee registryEmployee;
 
-    @GetMapping("/address")
-    public String address () {
-        return service.findAddress();
+    public EmployeeController(RegistryEmployee registryEmployee) {
+        this.registryEmployee = registryEmployee;
     }
-
-
 }
